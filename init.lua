@@ -374,6 +374,14 @@ require('lazy').setup({
         cond = function()
           return vim.fn.executable 'make' == 1
         end,
+        config = function ()
+          return {
+         find_files = {
+
+            hidden=true;
+          }
+        }
+        end
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 

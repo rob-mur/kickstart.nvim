@@ -1,4 +1,4 @@
---[[
+--[[init
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -374,13 +374,6 @@ require('lazy').setup({
         cond = function()
           return vim.fn.executable 'make' == 1
         end,
-        config = function ()
-          return {
-            find_files = {
-              hidden=true;
-            }
-          }
-        end
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
@@ -434,9 +427,11 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', function()
+        builtin.find_files({  hidden=true })
+      end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sF', function()
-        builtin.find_files({ cwd = '/' })
+        builtin.find_files({ cwd = '/', hidden=true })
       end, { desc = '[S]earch [F]iles in root' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -693,6 +688,8 @@ require('lazy').setup({
         ts_ls = {},
         --
 
+        bashls = {},
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -844,7 +841,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'super-tab',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps

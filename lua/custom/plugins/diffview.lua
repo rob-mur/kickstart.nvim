@@ -12,6 +12,14 @@ return {
       desc = 'Diff file history view for repo',
     },
     {
+      '<leader>dfv',
+      function()
+        vim.cmd "'<,'>DiffviewFileHistory"
+      end,
+      mode = 'v',
+      desc = 'Diff file history view for repo (visual mode)',
+    },
+    {
       '<leader>dsfv',
       '<cmd>DiffviewFileHistory %<cr>',
       desc = 'Diff file history view for the currently open file',

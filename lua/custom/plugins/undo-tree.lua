@@ -8,5 +8,7 @@ return {
       vim.fn.mkdir(undodir, 'p', 0700)
     end
     vim.opt.undodir = undodir
+
+    vim.g.undotree_SetFocusWhenToggle = 1
   end,
 }

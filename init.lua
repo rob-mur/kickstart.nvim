@@ -406,11 +406,12 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          file_ignore_patterns = { '^%.git/', '^node_modules/' },
+          mappings = {
+            i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -428,13 +429,13 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', function()
-        builtin.find_files { hidden = true }
+        builtin.find_files { hidden = true, no_ignore = true }
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sF', function()
-        builtin.find_files { cwd = '/', hidden = true }
+        builtin.find_files { cwd = '/', hidden = true, no_ignore = true }
       end, { desc = '[S]earch [F]iles in root' })
       vim.keymap.set('n', '<leader>sH', function()
-        builtin.find_files { cwd = '$HOME', hidden = true }
+        builtin.find_files { cwd = '$HOME', hidden = true, no_ignore = true }
       end, { desc = '[S]earch files in [H]ome' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })

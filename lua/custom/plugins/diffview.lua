@@ -29,5 +29,16 @@ return {
       '<cmd>DiffviewClose<cr>',
       desc = 'Close the current diffview',
     },
+    {
+      '<leader>di',
+      function()
+        vim.ui.input({ prompt = 'DiffviewOpen ' }, function(input)
+          if input and input ~= '' then
+            vim.cmd('DiffviewOpen ' .. input)
+          end
+        end)
+      end,
+      desc = 'DiffviewOpen with user input',
+    },
   },
 }

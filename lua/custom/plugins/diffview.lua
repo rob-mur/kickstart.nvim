@@ -2,17 +2,17 @@ return {
   'sindrets/diffview.nvim',
   keys = {
     {
-      '<leader>dv',
+      '<leader>gv',
       '<cmd>DiffviewOpen<cr>',
       desc = 'Diff view for changes since last commit (or rebase/merge)',
     },
     {
-      '<leader>dfv',
+      '<leader>gfv',
       '<cmd>DiffviewFileHistory<cr>',
       desc = 'Diff file history view for repo',
     },
     {
-      '<leader>dfv',
+      '<leader>gfv',
       function()
         vim.cmd "'<,'>DiffviewFileHistory"
       end,
@@ -20,17 +20,17 @@ return {
       desc = 'Diff file history view for repo (visual mode)',
     },
     {
-      '<leader>dsfv',
+      '<leader>gsfv',
       '<cmd>DiffviewFileHistory %<cr>',
       desc = 'Diff file history view for the currently open file',
     },
     {
-      '<leader>dc',
+      '<leader>gc',
       '<cmd>DiffviewClose<cr>',
       desc = 'Close the current diffview',
     },
     {
-      '<leader>di',
+      '<leader>gi',
       function()
         vim.ui.input({ prompt = 'DiffviewOpen ' }, function(input)
           if input and input ~= '' then
